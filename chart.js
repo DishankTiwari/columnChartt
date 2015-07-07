@@ -4,7 +4,7 @@ var chart = {
 		list : [
 		{
 			"label":"Jan",
-			"value":"600"
+			"value":"500"
 		},
 		{
 			"label":"Feb",
@@ -24,7 +24,7 @@ var chart = {
 		},
 		{
 			"label":"June",
-			"value":"750"
+			"value":"400"
 		}
 		]
 	};
@@ -35,7 +35,7 @@ window.onload = function () {
 	var arr = []; 
 	var rect = paper.rect(100, 50, (chart.width)+20, chart.height)
 	.attr("stroke", "red")
-	.attr("stroke-width", "2")
+	.attr("stroke-width", "3")
 	//debugger;
 	for(i in chart){
 		//console.log(i);
@@ -59,8 +59,10 @@ window.onload = function () {
 			arr[j] = arr[j]/c;
 		}
 	}
-	//var c = paper.path("M100 450L620 450")
-	//.attr("stroke-dasharray", "-");
+	function line(startX,startY,endX,endY){
+		return paper.path("M"+startX+" "+startY+"L"+endX+" "+endY)
+		.attr("stroke-dasharray", "-.").toBack();
+	}
 	var a = x,r;
 	r = ((chart.width) / arr.length) - 20;
 	for(var i = 0; i < arr.length; i++){
@@ -70,6 +72,20 @@ window.onload = function () {
 		a = a + r;
 		paper.text(a-30, y+10, chart.list[i].label)
 		.attr("fill", "brown")
-		.attr("font-size", "15");	
+		.attr("font-size", "15");
+		//paper.text(x, chart.height-arr.length-j, );
+		for(j = 0; j < 450; j+=50){
+			line(x, chart.height-arr.length-j, chart.width+120, chart.height-arr.length-j);
+		}
+		paper.text(chart.width-140, chart.height-470, "Column Chart")
+		 .attr("font-size", "50")
+		 .attr("fill", "darkBlue");
+		paper.text(chart.width-140, chart.height+90, "Monthly Division")
+		 .attr("font-size", "20")
+		 .attr("fill", "darkRed");
+		paper.text(chart.width-450, chart.height-200, "Electric Expences")
+		 .rotate(-90,[chart.width-450],[chart.height-200])
+		 .attr("font-size", "20")
+		 .attr("fill", "darkRed");
 	}
 };
