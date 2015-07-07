@@ -68,8 +68,12 @@ window.onload = function () {
 	for(var i = 0; i < arr.length; i++){
 		a = a + 20;
 		paper.rect(a, y-arr[i], r, arr[i])
-		.attr("fill", "blue");
+		.attr("fill", "lightblue")
+		//.attr("title", "chart.list[i].value");
 		a = a + r;
+		paper.text(a-30, y-arr[i]+10, chart.list[i].value)
+		.attr("font-size", "15")
+		.attr("fill", "blue");
 		paper.text(a-30, y+10, chart.list[i].label)
 		.attr("fill", "brown")
 		.attr("font-size", "15");
