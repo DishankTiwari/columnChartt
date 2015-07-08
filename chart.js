@@ -75,7 +75,7 @@ c1.node.onclick = function () {
 		yAxisName : paper.text(chart.width-140, chart.height+90, "Monthly Division")
 		 .attr("font-size", "20")
 		 .attr("fill", "darkRed");
-		xAxisName : paper.text(chart.width-450, chart.height-200, "Electric Expences")
+		xAxisName : paper.text(chart.width-450, chart.height-200, "Electric Expences(in Rs.)")
 		 .rotate(-90,[chart.width-450],[chart.height-200])
 		 .attr("font-size", "20")
 		 .attr("fill", "darkRed");
