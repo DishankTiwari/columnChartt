@@ -1,10 +1,12 @@
 window.onload = function () {
-	var paper = Raphael("container", 1000, 1000);
+	var paper = Raphael("container", 800, 650);
 	var x = 100;
 	var y = 550;
 	var arr = []; 
 	var c1 = null, c2 = null;
-	rectangle : var rect = paper.rect(100, 50, (chart.width)+20, chart.height)
+
+	function draw(){
+	var rect = paper.rect(100, 50, (chart.width)+20, chart.height)
 	.attr("stroke", "red")
 	.attr("stroke-width", "3")
 	//debugger;
@@ -16,6 +18,9 @@ window.onload = function () {
 			}	
 		}
 	}
+}
+draw();
+	
 	var max = 0;
 	for (var j = 0; j < arr.length; j++) {
 		if(arr[j] > max)
@@ -40,9 +45,10 @@ window.onload = function () {
 		a = a + 20;
 		paper.rect(a, y-arr[i], r, arr[i])
 		.attr("fill", "skyblue")
+		.data("val",chart.list[i].value)
 		.mouseover(function() {
             this.attr("fill", "yellow")
-           // alert(400)
+            .attr("title",this.data("val"))
         })
         .mouseout(function() {
             this.attr("fill", "skyblue")
@@ -53,14 +59,9 @@ window.onload = function () {
 		});
 c1.node.onclick = function () {
     alert(chart.list[i].value);
-};*/
-		paper.text(a-30, y-arr[i]+10, chart.list[i].value)
+};*/	paper.text(a-30, y-arr[i]+10, chart.list[i].value)
 		.attr("font-size", "15")
 		.attr("fill", "blue")
-		.mouseover(function(){
-			this.attr("fill", "red")
-			this.alert(chart.list[i].value)
-		});
 		label : paper.text(a-30, y+10, chart.list[i].label)
 		.attr("fill", "brown")
 		.attr("font-size", "15");
